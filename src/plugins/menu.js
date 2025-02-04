@@ -1,4 +1,4 @@
-import { generateWAMessageContent } from 'baileys';
+import { generateWAMessageContent, generateWAMessageFromContent } from '@al-e-dev/baileys';
 import { format as formatDate } from 'date-fns'
 import { fromZonedTime } from 'date-fns-tz'
 import { filesize } from 'filesize'
