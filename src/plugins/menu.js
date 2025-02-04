@@ -34,14 +34,8 @@ export default {
             return imageMessage
         }
 
-        let msg = generateWAMessageFromContent(
-            m.from,
-            {
-                viewOnceMessage: {
-                    message: {
-                        interactiveMessage: {
-                            body: {
-                                text: `💨 ${greeting} @${m.sender.split('@')[0]}
+        await sock.sendMessage(m.from, {
+            text: `💨 ${greeting} @${m.sender.split('@')[0]}
 *¤* ${lang.motivational[Math.floor(Math.random() * lang.motivational.length)]}
 
 *${lang.menu.m}:* ${db.data.settings[sock.user.jid].private ? lang.public_status : lang.private_status}
@@ -90,44 +84,18 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
 ⁜ .join <url>
 ⁜ .leave
 ⁜ .private <on/off>
-⁜ .broadcast <query>
-`,
-                            },
-                            footer: {
-                                text: `🔥 ${_config.bot.name} 🔥`,
-                            },
-                            header: {
-                                title: _config.bot.name,
-                                hasMediaAttachment: true,
-                                productMessage: {
-                                    product: {
-                                        productImage: await image("./nazi.jpg"),
-                                        productId: "8363525327041213",
-                                        title: convertTimeOut(process.uptime() * 1000),
-                                        description: "created by " + _config.owner.name,
-                                        currencyCode: "MXN",
-                                        priceAmount1000: "250000",
-                                        retailerId: "nazi-team-bot",
-                                        url: "https://github.com",
-                                        productImageCount: 1,
-                                    },
-                                    businessOwnerJid: "573013116003@s.whatsapp.net",
-                                },
-                            },
-                            contextInfo: {
-                                mentionedJid: [m.sender],
-                            }
-                        },
-                    },
-                },
-            },
-            { quoted: m },
-        );
-
-        await sock.relayMessage(
-            m.from,
-            msg.message,
-            { messageId: msg.key.id }
-        )
+⁜ .broadcast <query>`,
+            contextInfo: {
+                mentionedJid: [m.sender],
+                externalAdReply: {
+                    body: convertTimeOut(process.uptime() * 1000),
+                    mediaType: 1,
+                    thumbnailUrl: "./4k.jpg",
+                    sourceUrl: "https://github.com",
+                    renderLargerThumbnail: true,
+                    showAdAttribution: false,
+                }
+            }
+        })
     }
 };
