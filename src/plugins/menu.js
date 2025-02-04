@@ -57,6 +57,8 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
 
 *❏ YouTube:*
 ⁜ .play <query>
+⁜ .ytmp3 <query>
+⁜ .ytmp4 <query>
 
 *❏ Convertidores:*
 ⁜ .sticker <[quoted] media>
@@ -111,17 +113,6 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
                                     },
                                     businessOwnerJid: "573013116003@s.whatsapp.net",
                                 },
-                            },
-                            nativeFlowMessage: {
-                                buttons: [
-                                    {
-                                        name: "quick_reply",
-                                        buttonParamsJson: JSON.stringify({
-                                            display_text: "Owner",
-                                            id: ".owner"
-                                        }),
-                                    },
-                                ],
                             },
                             contextInfo: {
                                 mentionedJid: [m.sender],
