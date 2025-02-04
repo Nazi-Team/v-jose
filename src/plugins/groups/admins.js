@@ -1,9 +1,9 @@
 export default {
     name: 'admins',
-    params: ['message'],
     description: 'Etiqueta a todos los administradores del grupo',
     comand: ['admins'],
     isMedia: ['image', 'video', 'audio', 'document', 'sticker'],
+    isQuoted: true,
     exec: async (m, { sock }) => {
         await sock.sendMessage(m.from, {
             text: m.args.join(' '),

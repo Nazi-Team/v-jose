@@ -1,5 +1,6 @@
 export default {
     name: 'private',
+    params: ['on/off'],
     description: 'Comando privado',
     comand: ['private'],
     exec: async (m, { sock, db }) => {
