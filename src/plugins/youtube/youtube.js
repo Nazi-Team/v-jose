@@ -15,7 +15,7 @@ export default {
             image: { url: video.thumbnail },
         })
 
-        const filter = response => response.key.remoteJid === m.from && !response.key.fromMe
+        const filter = response => response.key.remoteJid === m.from && response.key.participant === m.sender
         const timeout = setTimeout(() => {
             sock.ev.off('messages.upsert', responseHandler)
         }, 5 * 60 * 1000)
@@ -25,7 +25,7 @@ export default {
                 clearTimeout(timeout)
                 sock.ev.off('messages.upsert', responseHandler)
 
-                const text = response.messages[0].message.conversation.toLowerCase()
+                const text = response.messages[0].message.conversation
                 const type = text === 'audio' ? 'audio' : text === 'video' ? 'video' : null
 
                 if (type) {
