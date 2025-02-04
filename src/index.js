@@ -85,7 +85,7 @@ const start = async () => {
 
             const image = await sock.profilePictureUrl(p, 'image')
                 .catch(() => sock.profilePictureUrl(id, 'image'))
-                .catch(() => _config.bot.hd);
+                .catch(() => "./4a.jpg");
 
             msg && sock.sendMessage(id, {
                 image: { url: image },
