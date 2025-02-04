@@ -12,6 +12,22 @@ const platform = os.platform()
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = text => new Promise(resolve => rl.question(text, resolve))
 
+const detect = (t) => {
+    return [...new Set(
+        (t.match(/(?:[a-z+.-]+:\/\/[^\s]+)|(?:\b(?:www\.|ftp\.)[^\s]+\.[a-z]{2,})|(?:\b[^\s/]+\.[a-z]{2,}(?:\/|$))|(?:\d{1,3}\.){3}\d{1,3}(?::\d+)?/gi) || [])
+        .map(m => m.replace(/[.,;!?]+$/, ''))
+        .map(m => /(\/\/)|^(www|ftp)/.test(m) ? m : 'http://' + m)
+        .filter(u => {
+            try {
+                const url = new URL(u);
+                return ['http:', 'https:', 'ftp:', 'mailto:', 'tel:', 'file:'].includes(url.protocol.toLowerCase())
+            } catch {
+                return /^[a-z0-9.-]+\.[a-z]{2,}(?::\d+)?(\/.*)?$/i.test(u)
+            }
+        })
+    )]
+};
+
 const start = async () => {
     const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) })
     const { state, saveCreds } = await useMultiFileAuthState("./auth/session");
@@ -99,11 +115,11 @@ const start = async () => {
                 }
 
                 if (db.data.chats[m.from]?.antilink && m.isGroup && m.isBotAdmin && !m.isAdmin) {
-                    const linkRegex = /https?:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{20,24}/
-                    if (linkRegex.test(m.body)) {
-                        await sock.sendMessage(m.from, { text: `Enlace detectado y eliminado. @${m.sender.split('@')[0]} será eliminado del grupo.` })
-                        await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove')
-                        await sock.sendMessage(m.from, { delete: m.key })
+                    const links = detect(m.body)
+                    if (links.length > 0) {
+                        await sock.sendMessage(m.from, { delete: m.key });
+                        await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
+                        await sock.sendMessage(m.from, { text: `Enlace detectado y eliminado. @${m.sender.split('@')[0]} fue eliminado del grupo.` });
                         continue
                     }
                 }

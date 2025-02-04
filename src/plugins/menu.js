@@ -45,15 +45,11 @@ export default {
 *¤* ${lang.motivational[Math.floor(Math.random() * lang.motivational.length)]}
 
 *${lang.menu.m}:* ${db.data.settings[sock.user.jid].private ? lang.public_status : lang.private_status}
-*${lang.menu.c}:* ${_config.owner.name}
-                
-*${lang.menu.p}:* _default ( ${db.data.settings[sock.user.jid].prefix[0]} )_
 *${lang.menu.db}:* ${filesize(readFileSync('./db.json').length)}
 
 *${lang.menu.t}:* ${db.data.users[m.sender]?.timezone}
 *${lang.menu.h}:* ${formatDate(new Date(), 'HH:mm:ss')}
 ${String.fromCharCode(8206).repeat(4000)}
-Algunos comandos pueden no estar disponibles por el sistema operativo donde se hospeda el bot o porque no están implementados.
 
 *❏ YouTube:*
 ⁜ .play <query>
@@ -85,7 +81,7 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
 ⁜ .setBye <query>
 ⁜ .setPromote <query>
 ⁜ .setDemote <query>
-+
+
 *❏ Administración:*
 ⁜ .join <url>
 ⁜ .leave
