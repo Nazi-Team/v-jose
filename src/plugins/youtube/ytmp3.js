@@ -15,6 +15,8 @@ export default {
             image: { url: video.thumbnail },
         })
 
-        await sock.sendMedia(m.from, `https://api.botcahx.eu.org/api/download/get-YoutubeResult?url=https://youtu.be/${video.id}&type=audio&xky=zMxPoM%C2%81S`)
+        const url = `https://api.botcahx.eu.org/api/download/get-YoutubeResult?url=https://youtu.be/${video.id}&type=audio&xky=zMxPoM%C2%81S`
+
+        await sock.sendMedia(m.from, url)
     }
 }

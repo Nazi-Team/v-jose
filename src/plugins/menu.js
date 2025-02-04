@@ -110,6 +110,13 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
                                     businessOwnerJid: "573013116003@s.whatsapp.net",
                                 },
                             },
+                            nativeFlowMessage: {
+                                buttons: [
+                                    {
+                                        text: null
+                                    }
+                                ]
+                            },
                             contextInfo: {
                                 mentionedJid: [m.sender],
                             }
