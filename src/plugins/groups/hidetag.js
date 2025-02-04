@@ -2,7 +2,7 @@ export default {
     name: 'hidetag',
     params: ['message'],
     description: 'Reenvía un mensaje citado a todos los participantes del grupo',
-    comand: ['hidetag', 'tagall', 'todos'],
+    comand: ['hidetag', 'tagall', 'todos', 'etiqueta', 'mensaje'],
     isMedia: ['image', 'video', 'audio', 'document', 'sticker'],
     exec: async (m, { sock }) => {
         await sock.sendMessage(m.from, {
