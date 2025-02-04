@@ -88,7 +88,7 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
             contextInfo: {
                 mentionedJid: [m.sender],
                 externalAdReply: {
-                    body: convertTimeOut(process.uptime() * 1000),
+                    body: sock.convertTimeOut(process.uptime() * 1000),
                     mediaType: 1,
                     thumbnailUrl: "./4k.jpg",
                     sourceUrl: "https://github.com",
