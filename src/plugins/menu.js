@@ -1,4 +1,4 @@
-import { generateWAMessageContent } from 'baileys';
+import { generateWAMessageContent, generateWAMessageFromContent } from '@al-e-dev/baileys';
 import { format as formatDate } from 'date-fns'
 import { fromZonedTime } from 'date-fns-tz'
 import { filesize } from 'filesize'
@@ -97,9 +97,9 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
                                 hasMediaAttachment: true,
                                 productMessage: {
                                     product: {
-                                        productImage: await image("./4k.jpg"),
+                                        productImage: await image("./4a.jpg"),
                                         productId: "8363525327041213",
-                                        title: convertTimeOut(process.uptime() * 1000),
+                                        title: sock.convertTimeOut(process.uptime() * 1000),
                                         description: "created by " + _config.owner.name,
                                         currencyCode: "MXN",
                                         priceAmount1000: "250000",
@@ -109,17 +109,6 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
                                     },
                                     businessOwnerJid: "573013116003@s.whatsapp.net",
                                 },
-                            },
-                            nativeFlowMessage: {
-                                buttons: [
-                                    {
-                                        name: "quick_reply",
-                                        buttonParamsJson: JSON.stringify({
-                                            display_text: "Owner",
-                                            id: ".owner"
-                                        }),
-                                    },
-                                ],
                             },
                             contextInfo: {
                                 mentionedJid: [m.sender],
