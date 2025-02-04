@@ -35,7 +35,10 @@ export default {
         }
 
         await sock.sendMessage(m.from, {
-            text: `💨 ${greeting} @${m.sender.split('@')[0]}
+            image: {
+                url: "./4k.jpg",
+            },
+            caption: `💨 ${greeting} @${m.sender.split('@')[0]}
 *¤* ${lang.motivational[Math.floor(Math.random() * lang.motivational.length)]}
 
 *${lang.menu.m}:* ${db.data.settings[sock.user.jid].private ? lang.public_status : lang.private_status}
@@ -86,15 +89,7 @@ Algunos comandos pueden no estar disponibles por el sistema operativo donde se h
 ⁜ .private <on/off>
 ⁜ .broadcast <query>`,
             contextInfo: {
-                mentionedJid: [m.sender],
-                externalAdReply: {
-                    body: sock.convertTimeOut(process.uptime() * 1000),
-                    mediaType: 1,
-                    thumbnailUrl: "./4k.jpg",
-                    sourceUrl: "https://github.com",
-                    renderLargerThumbnail: true,
-                    showAdAttribution: false,
-                }
+                mentionedJid: [m.sender]
             }
         })
     }
