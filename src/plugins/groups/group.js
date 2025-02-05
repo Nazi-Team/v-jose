@@ -2,7 +2,7 @@ export default {
     name: 'group',
     params: ['cerrar/abrir'],
     description: 'Gestionar configuraciones del grupo',
-    comand: ['group', 'gp'],
+    comand: ['group', 'gp', 'grupo'],
     exec: async (m, { sock }) => {
         const action = m.args[0]
         const metadata = await sock.groupMetadata(m.from)
