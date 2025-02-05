@@ -6,7 +6,7 @@ export default {
         const users = m.quoted ? [m.quoted.sender] : (m.mentionedJid.length ? m.mentionedJid : [m.args.join(" ").replace(/[^0-9]/g, '') + '@s.whatsapp.net'])
         if (!users.length) return await sock.sendMessage(m.from, { text: 'Selecciona un usuario para degradar.' }, { quoted: m })
 
-        const admins = m.admins.map(admin => admin.jid)
+        const admins = m.admins;
         const validUsers = users.filter(user => admins.includes(user))
 
         if (!validUsers.length) return await sock.sendMessage(m.from, { text: 'Ninguno de los usuarios seleccionados es administrador.' }, { quoted: m })
