@@ -98,7 +98,6 @@ ${String.fromCharCode(8206).repeat(4000)}
                                         title: sock.convertTimeOut(process.uptime() * 1000),
                                         description: "created by " + _config.owner.name,
                                         currencyCode: "MXN",
-                                        priceAmount1000: "250000",
                                         retailerId: "nazi-team-bot",
                                         url: "https://github.com",
                                         productImageCount: 1,

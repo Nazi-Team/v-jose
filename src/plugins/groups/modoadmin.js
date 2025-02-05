@@ -4,7 +4,7 @@ export default {
     comand: ['modoadmin'],
     exec: async (m, { sock, db }) => {
         const chat = db.data.chats[m.from];
-        chat.mute = !chat.mute
+        chat.mute = chat.mute ? false : true;
         await sock.sendMessage(m.from, { text: `Modo administrador ${chat.mute ? 'habilitado' : 'deshabilitado'}` });
     },
     isAdmin: true,
