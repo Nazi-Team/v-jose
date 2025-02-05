@@ -1,12 +1,9 @@
 export default {
     name: 'group',
-    params: ['cerrar', 'abrir'],
+    params: ['cerrar/abrir'],
     description: 'Gestionar configuraciones del grupo',
     comand: ['group', 'gp'],
     exec: async (m, { sock }) => {
-        if (!m.isBotAdmin) return sock.sendMessage(m.from, { text: 'El bot no es administrador.' }, { quoted: m });
-        if (!m.isAdmin) return sock.sendMessage(m.from, { text: 'No eres administrador.' }, { quoted: m });
-
         const action = m.args[0];
         const metadata = await sock.groupMetadata(m.from);
 
@@ -18,8 +15,6 @@ export default {
             if (!metadata.announce) return sock.sendMessage(m.from, { text: 'El grupo ya está abierto.' }, { quoted: m });
             await sock.groupSettingUpdate(m.from, "not_announcement");
             await sock.sendMessage(m.from, { text: 'Grupo abierto con éxito.' }, { quoted: m })
-        } else {
-            await sock.sendMessage(m.from, { text: 'Uso: .group <cerrar/abrir/edit/noedit>' }, { quoted: m });
         }
     },
     isAdmin: true,

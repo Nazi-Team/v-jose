@@ -1,6 +1,5 @@
 export default {
     name: 'add',
-    params: ['number'],
     description: 'Añadir miembro al grupo',
     comand: ['add'],
     exec: async (m, { sock }) => {

@@ -2,7 +2,6 @@ export default {
     name: 'promote',
     description: 'Promover miembro a administrador',
     comand: ['promote'],
-    isQuoted: true,
     exec: async (m, { sock }) => {
         const users = m.quoted ? [m.quoted.sender] : (m.mentionedJid.length ? m.mentionedJid : [m.args.join(" ").replace(/[^0-9]/g, '') + '@s.whatsapp.net']);
         if (!users.length) return await sock.sendMessage(m.from, { text: 'Selecciona un usuario para promover.' }, { quoted: m });

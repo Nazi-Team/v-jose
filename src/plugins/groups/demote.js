@@ -2,7 +2,6 @@ export default {
     name: 'demote',
     description: 'Degradar miembro de administrador',
     comand: ['demote'],
-    isQuoted: true,
     exec: async (m, { sock }) => {
         const user = m.quoted ? m.quoted.sender : (m.mentionedJid.length ? m.mentionedJid[0] : m.args.join(" ").replace(/[^0-9]/g, '') + '@s.whatsapp.net');
         if (!user) return await sock.sendMessage(m.from, { text: 'Selecciona un usuario para degradar.' }, { quoted: m });
