@@ -53,8 +53,6 @@ const start = async () => {
     })
 
     sock.ev.on("group-participants.update", async ({ id, author, participants, action }) => {
-        if (!action || !db.data.chats[id]?.welcome || author?.endsWith("@lid")) return;
-
         const { subject, desc } = await sock.groupMetadata(id);
         const msg = {
             add: () => author ? `Fuiste añadido por @${author.split`@`[0]}` : `Te uniste mediante enlace`,
@@ -74,6 +72,9 @@ const start = async () => {
                     continue
                 }
             }
+
+            if (!action || !db.data.chats[id]?.welcome || author?.endsWith("@lid")) return;
+
             const text = db.data.chats[id].messages[action]
                 .replace(/(@group|@action|@user|@time|@desc)/g, (m) => ({
                     '@group': `@${id}`,
