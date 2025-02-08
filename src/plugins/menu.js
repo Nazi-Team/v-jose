@@ -51,42 +51,42 @@ export default {
 *${lang.menu.h}:* ${formatDate(new Date(), 'HH:mm:ss')}
 ${String.fromCharCode(8206).repeat(4000)}
 
-*❏ YouTube:*
-⁜ .play <query>
-⁜ .ytmp3 <query>
-⁜ .ytmp4 <query>
+*☰  YouTube:*
+⍚ .play <query>
+⍚ .ytmp3 <query>
+⍚ .ytmp4 <query>
 
-*❏ Convertidores:*
-⁜ .sticker <[quoted] media>
+*☰  Convertidores:*
+⍚ .sticker <[quoted] media>
 
-*❏ Herramientas:*
-⁜ .ver <[quoted] media>
+*☰  Herramientas:*
+⍚ .ver <[quoted] media>
 
-*❏ Grupos:*
-⁜ .add <@tag>
-⁜ .remove <@tag>
-⁜ .promote <@tag>
-⁜ .demote <@tag>
-⁜ .antilink <on/off>
-⁜ .antidelete <on/off>
-⁜ .antifake <on/off>
-⁜ .welcome <on/off>
-⁜ .group <open/close>
-⁜ .addfake <query>
-⁜ .delfake <query>
-⁜ .hidetag <query>
+*☰  Grupos:*
+⍚ .add <@tag>
+⍚ .remove <@tag>
+⍚ .promote <@tag>
+⍚ .demote <@tag>
+⍚ .antilink <on/off>
+⍚ .antidelete <on/off>
+⍚ .antifake <on/off>
+⍚ .welcome <on/off>
+⍚ .group <open/close>
+⍚ .addfake <query>
+⍚ .delfake <query>
+⍚ .hidetag <query>
 
-*❏ Mensajes:*
-⁜ .setWelcome <query>
-⁜ .setBye <query>
-⁜ .setPromote <query>
-⁜ .setDemote <query>
+*☰  Mensajes:*
+⍚ .setWelcome <query>
+⍚ .setBye <query>
+⍚ .setPromote <query>
+⍚ .setDemote <query>
 
-*❏ Administración:*
-⁜ .join <url>
-⁜ .leave
-⁜ .private <on/off>
-⁜ .broadcast <query>`,
+*☰  Administración:*
+⍚ .join <url>
+⍚ .leave
+⍚ .private <on/off>
+⍚ .broadcast <query>`,
                             },
                             header: {
                                 title: _config.bot.name,
