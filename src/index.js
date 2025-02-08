@@ -120,7 +120,7 @@ const start = async () => {
                     if (links.length > 0) {
                         await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
                         await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } });
-                        await m.reply(`Enlace detectado y eliminado. @${m.sender.split('@')[0]} fue eliminado del grupo.`)
+                        await m.reply(`> Enlace detectado y eliminado. @${m.sender.split('@')[0]} fue eliminado del grupo.`)
                         continue
                     }
                 }
