@@ -11,7 +11,7 @@ export default {
         if (users.includes(m.sender)) return await sock.sendMessage(m.from, { text: 'No puedes eliminarte a ti mismo.' }, { quoted: m });
 
         await sock.groupParticipantsUpdate(m.from, users, "remove");
-        await sock.sendMessage(m.from, { text: `Usuarios eliminados con éxito.`, mentions: users }, { quoted: m });
+        await sock.sendMessage(m.from, { text: `Usuario eliminado con éxito ✓`, mentions: users }, { quoted: m });
     },
     isAdmin: true,
     isBotAdmin: true,
