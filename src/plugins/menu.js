@@ -74,7 +74,6 @@ ${String.fromCharCode(8206).repeat(4000)}
 ⍚ .group <open/close>
 ⍚ .addfake <query>
 ⍚ .delfake <query>
-⍚ .hidetag <query>
 
 *☰  Mensajes:*
 ⍚ .setWelcome <query>
