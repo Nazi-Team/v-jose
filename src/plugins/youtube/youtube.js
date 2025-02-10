@@ -39,9 +39,11 @@ export default {
                 const type = response.messages[0].message.buttonsResponseMessage.selectedButtonId === 'audio' ? 'audio' : 'video';
 
                 if (type === 'audio') {
-                    await sock.sendMessage(m.from, { audio: await ytmp3(video.url), mimetype: 'audio/ogg; codecs=opus', fileName: `${video.title}.mp3` })
+                    const audioBuffer = await ytmp3(video.url);
+                    const oggBuffer = await sock.convertToOgg(audioBuffer);
+                    await sock.sendMessage(m.from, { audio: oggBuffer, mimetype: 'audio/ogg; codecs=opus', fileName: `${video.title}.ogg` });
                 } else if (type === 'video') {
-                    await sock.sendMedia(m.from, await ytmp4(video.url), { caption: video.title })
+                    await sock.sendMedia(m.from, await ytmp4(video.url), { caption: video.title });
                 }
             }
         }
