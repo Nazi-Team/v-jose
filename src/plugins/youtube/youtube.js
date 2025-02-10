@@ -1,5 +1,5 @@
 import YouTube from "../../scraper/youtube.js"
-import { ytmp4, ytmp3 } from "@hiudyy/ytdl"
+import { ytmp3, ytmp4 } from "@nazi-team/ytdl"
 
 export default {
     name: 'youtube',
