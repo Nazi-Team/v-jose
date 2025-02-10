@@ -40,12 +40,12 @@ export default {
                 const type = response.messages[0].message.buttonsResponseMessage.selectedButtonId === 'audio' ? 'audio' : 'video';
 
                 if (type === 'audio') {
-                    await sock.sendMedia(m.from, await ytmp3(url) )
+                    await sock.sendMedia(m.from, await ytmp3(`https://youtu.be/${video.id}`) )
                 } else if (type === 'video') {
-                    await sock.sendMedia(m.from, await ytmp4(url), { caption: video.title })
+                    await sock.sendMedia(m.from, await ytmp4(`https://youtu.be/${video.id}`), { caption: video.title })
                 }
             }
-        };
+        }
 
         sock.ev.on('messages.upsert', responseHandler)
     }
