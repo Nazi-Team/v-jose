@@ -5,7 +5,7 @@ export default {
     params: [],
     description: 'Actualiza el bot y reinicia el proceso',
     comand: ['update', 'actualizar'],
-    isAdmin: true,
+    isOwner: true,
     exec: async (m, { sock }) => {
         sock.sendMessage(m.from, { text: 'Actualizando el bot, por favor espera...' });
 
