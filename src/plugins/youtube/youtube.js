@@ -1,4 +1,5 @@
-import YouTube from "../../scraper/youtube.js";
+import YouTube from "../../scraper/youtube.js"
+import { ytmp4, ytmp3 } from "@hiudyy/ytdl"
 
 export default {
     name: 'youtube',
@@ -8,7 +9,7 @@ export default {
     os: true,
     exec: async (m, { sock }) => {
         const videos = await YouTube.search(m.text);
-        const video = videos[0];
+        const video = videos[0]
 
         sock.sendMessage(m.from, {
             caption: `*Título:* ${video.title}\n*Duración:* ${video.duration}\n*Canal:* ${video.author}\n*Vistas:* ${video.viewers}\n*Subido:* ${video.published}\n\n_Tiempo limite para responder 5 minutos_\n_Solo el remitente puede responder._`,
@@ -33,12 +34,11 @@ export default {
                 sock.ev.off('messages.upsert', responseHandler);
 
                 const type = response.messages[0].message.buttonsResponseMessage.selectedButtonId === 'audio' ? 'audio' : 'video';
-                const url = `https://api.botcahx.eu.org/api/download/get-YoutubeResult?url=https://youtu.be/${video.id}&type=${type}&xky=zMxPoM%C2%81S`;
 
                 if (type === 'audio') {
-                    await sock.sendMedia(m.from, url )
-                } else {
-                    await sock.sendMedia(m.from, url, { caption: video.title })
+                    await sock.sendMedia(m.from, await ytmp3(url) )
+                } else if (type === 'video') {
+                    await sock.sendMedia(m.from, await ytmp4(url), { caption: video.title })
                 }
             }
         };
