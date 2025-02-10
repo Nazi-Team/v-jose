@@ -13,7 +13,6 @@ export default {
     exec: async (m, { sock }) => {
         const videos = await YouTube.search(m.text);
         const video = videos[0]
-        console.log(video)
 
         sock.sendMessage(m.from, {
             caption: `*◖◗ Título:* ${video.title}\n*◖◗ Duración:* ${video.duration}\n*◖◗ Canal:* ${video.author}\n*◖◗ Vistas:* ${video.viewers}\n*◖◗ Subido:* ${video.published}\n\n_Tiempo limite para responder 5 minutos_\n𝙎𝙤𝙡𝙤 𝙚𝙡 𝙧𝙚𝙢𝙞𝙩𝙚𝙣𝙩𝙚 𝙥𝙪𝙚𝙙𝙚 𝙧𝙚𝙨𝙥𝙤𝙣𝙙𝙚𝙧`,
