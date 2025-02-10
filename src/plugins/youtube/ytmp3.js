@@ -21,6 +21,6 @@ export default {
 
         const audioBuffer = await ytmp3(video.url);
         const oggBuffer = await sock.convertToOgg(audioBuffer);
-        await sock.sendMessage(m.from, { audio: oggBuffer, mimetype: 'audio/ogg; codecs=opus', fileName: `${video.title}.ogg` });
+        await sock.sendMessage(m.from, { audio: oggBuffer, fileName: `${video.title}.ogg` });
     }
 }
