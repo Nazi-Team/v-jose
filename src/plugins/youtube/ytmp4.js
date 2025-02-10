@@ -1,4 +1,8 @@
-import YouTube from "../../scraper/youtube.js";
+import YouTube from "../../scraper/youtube.js"
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+const { ytmp4 } = require('@hiudyy/ytdl')
 
 export default {
     name: 'ytmp4',
@@ -15,6 +19,6 @@ export default {
             image: { url: video.thumbnail }
         })
 
-        await sock.sendMedia(m.from, `https://api.botcahx.eu.org/api/download/get-YoutubeResult?url=https://youtu.be/${video.id}&type=video&xky=zMxPoM%C2%81S`, { caption: video.title })
+        await sock.sendMedia(m.from, await ytmp4(video.url), { caption: video.title })
     }
 }
