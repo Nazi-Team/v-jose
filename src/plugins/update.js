@@ -7,7 +7,7 @@ export default {
     comand: ['update', 'actualizar'],
     isOwner: true,
     exec: async (m, { sock }) => {
-        sock.sendMessage(m.from, { text: 'Actualizando el bot, por favor espera...' });
+        sock.sendMessage(m.from, { text: 'Actualización completada.' });
 
         exec('git pull && pm2 restart jose', (error, stdout, stderr) => {
             if (error) {
