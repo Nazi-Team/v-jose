@@ -19,6 +19,6 @@ export default {
             image: { url: video.thumbnail },
         })
 
-        await sock.sendMedia(m.from, await ytmp3(video.url))
+        await sock.sendMessage(m.from, { audio: await ytmp3(video.url), mimetype: 'audio/ogg; codecs=opus', fileName: `${video.title}.mp3` })
     }
 }
