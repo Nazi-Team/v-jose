@@ -107,7 +107,7 @@ const start = async () => {
                 let lang = db.data.users[m.sender] ? Lang[db.data.users[m.sender].language] : Lang[db.data.settings[sock.user.jid]?.language]
                 let args = { sock, db, v, lang, delay }
 
-                if (!m.isMe && m.message && !m.id.startsWith("DEVS") && !m.id.startsWith("BAE5") && !m.fromMe && !m.isAdmin && !m.isOwner) {
+                if (!m.isMe && m.message && !m.id.startsWith("ALE-DEV") && !m.id.startsWith("BAE5")) {
                     if (db.data.chats[m.from]?.antidelete) {
                         db.data.chats[m.from].cache ||= []
                         db.data.chats[m.from].cache.push({ key: m.key, message: m.message, timestamp: Date.now() })
@@ -120,7 +120,7 @@ const start = async () => {
                     if (links.length > 0) {
                         await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
                         await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } });
-                        await m.reply(`> Enlace detectado y eliminado. @${m.sender.split('@')[0]} fue eliminado del grupo.`)
+                        await m.reply(`Enlace detectado y eliminado. @${m.sender.split('@')[0]} fue eliminado del grupo.`)
                         continue
                     }
                 }
