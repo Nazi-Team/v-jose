@@ -39,7 +39,7 @@ export default {
                 const type = response.messages[0].message.buttonsResponseMessage.selectedButtonId === 'audio' ? 'audio' : 'video';
 
                 if (type === 'audio') {
-                    await sock.sendMessage(m.from, { audio: await ytmp3(video.url), mimetype: 'audio/mpeg', fileName: `${sanitizeFileName(video.title)}.mp3` })
+                    await sock.sendMessage(m.from, { audio: await ytmp3(video.url), mimetype: 'audio/mpeg', fileName: `${video.title}.mp3` })
                 } else if (type === 'video') {
                     await sock.sendMedia(m.from, await ytmp4(video.url), { caption: video.title })
                 }
