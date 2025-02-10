@@ -11,7 +11,7 @@ global._config = {
         img: "https://files.catbox.moe/3m9yzl.jpg"
     },
     bot: {
-        name: "𝔍𝔬𝔰𝔢 ℭ - 𝔅𝔬𝔱",
+        name: "𝙹   𝙾   𝚂   𝙴   𝙲    -    𝙱   𝙾   𝚃",
         version: "1.0",
         hd: "https://files.catbox.moe/kkdvjl.jpg",
         img: "https://files.catbox.moe/ahdtgk.jpg"
