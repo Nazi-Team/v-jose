@@ -15,7 +15,7 @@ export default {
         const video = videos[0]
 
         sock.sendMessage(m.from, {
-            caption: `*◖◗ Título:* ${video.title}\n*◖◗ Duración:* ${video.duration}\n*◖◗ Canal:* ${video.author}\n*◖◗ Vistas:* ${video.viewers}\n*◖◗ Subido:* ${video.published}\n\n_Tiempo limite para responder 5 minutos_\n𝙎𝙤𝙡𝙤 𝙚𝙡 𝙧𝙚𝙢𝙞𝙩𝙚𝙣𝙩𝙚 𝙥𝙪𝙚𝙙𝙚 𝙧𝙚𝙨𝙥𝙤𝙣𝙙𝙚𝙧`,
+            caption: `*⤷𝙳̷ 𝙾̷ 𝚆̷ 𝙽̷ 𝙻̷ 𝙾̷ 𝙰̷ 𝙳̷-𝙼̷ 𝚄̷ 𝚂̷ 𝙸̷ 𝙲̷⤶*\nn*◖◗ Título:* ${video.title}\n*◖◗ Duración:* ${video.duration}\n*◖◗ Canal:* ${video.author}\n*◖◗ Vistas:* ${video.viewers}\n*◖◗ Subido:* ${video.published}\n\n_Tiempo limite para responder 5 minutos_\n𝙎𝙤𝙡𝙤 𝙚𝙡 𝙧𝙚𝙢𝙞𝙩𝙚𝙣𝙩𝙚 𝙥𝙪𝙚𝙙𝙚 𝙧𝙚𝙨𝙥𝙤𝙣𝙙𝙚𝙧`,
             footer: _config.bot.name,
             image: { url: video.thumbnail },
             buttons: [
