@@ -15,7 +15,7 @@ export default {
         const video = videos[0]
 
         sock.sendMessage(m.from, {
-            caption: `*⤷𝙳̷ 𝙾̷ 𝚆̷ 𝙽̷ 𝙻̷ 𝙾̷ 𝙰̷ 𝙳̷-𝙼̷ 𝚄̷ 𝚂̷ 𝙸̷ 𝙲̷⤶*\n\n*🔹Título:* ${video.title}\n*🔹Duración:* ${video.duration}\n*🔹Canal:* ${video.author}\n*🔹Vistas:* ${video.viewers}\n*🔹Subido:* ${video.published}\n> *Enviando audio espere…*`,
+            caption: `*⤷𝙳̷ 𝙾̷ 𝚆̷ 𝙽̷ 𝙻̷ 𝙾̷ 𝙰̷ 𝙳̷-𝙼̷ 𝚄̷ 𝚂̷ 𝙸̷ 𝙲̷⤶*\n\n*🔹Título:* ${video.title}\n*🔹Duración:* ${video.duration}\n*🔹Canal:* ${video.author}\n*🔹Vistas:* ${video.viewers}\n*🔹Subido:* ${video.published}\n\n> *Enviando audio espere…*`,
             image: { url: video.thumbnail },
         })
 
