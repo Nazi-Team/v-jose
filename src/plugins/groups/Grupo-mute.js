@@ -1,4 +1,4 @@
-
+export default(
 const handler = async (m, { sock, m.command, m.text, m.isAdmin }) => {
     if (m.command === 'mute') {
         if (!m.isAdmin) throw '*Solo un administrador puede ejecutar este comando*';
@@ -79,7 +79,8 @@ const handler = async (m, { sock, m.command, m.text, m.isAdmin }) => {
 };
 
 handler.command : ['mute', 'unmute'];
-handler.isAdmin : true,
-handler.isBotAdmin : true,
+handler.isAdmin: true,
+    isBotAdmin: true,
+    isGroup: true
 
 export default handler;
