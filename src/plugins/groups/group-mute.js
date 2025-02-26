@@ -81,8 +81,9 @@ const botOwner = global.owner[0][0] + '@s.whatsapp.net';
     }
 };
 
-handler.command = ['mute', 'unmute'];
-handler.admin = true;
-handler.botAdmin = true;
-
+handler.m.command = ['mute', 'unmute'];
+    isAdmin: true,
+    isBotAdmin: true,
+    isGroup: true
+};
 export default handler;
