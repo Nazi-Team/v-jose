@@ -1,6 +1,6 @@
 
 const handler = async (m, { sock, m.command, m.text, m.isAdmin }) => {
-    if (command === 'mute') {
+    if (m.command === 'mute') {
         if (!m.isAdmin) throw '*Solo un administrador puede ejecutar este comando*';
         
         const botOwner = global.owner[0][0] + '@s.whatsapp.net';
@@ -78,8 +78,8 @@ const handler = async (m, { sock, m.command, m.text, m.isAdmin }) => {
     }
 };
 
-handler.command = ['mute', 'unmute'];
-handler.admin = true;
-handler.botAdmin = true;
+handler.command : ['mute', 'unmute'];
+handler.isAdmin : true,
+handler.isBotAdmin : true,
 
 export default handler;
