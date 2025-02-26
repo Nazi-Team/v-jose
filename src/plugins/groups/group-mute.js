@@ -1,10 +1,10 @@
 export default {
     name: 'mute',
-    description: 'Eliminar miembro del grupo',
+    description: 'mutear  miembro del grupo',
     comand: ['mute'],
     exec: async (m, { sock, m.command, m.text, m.isAdmin }) => {
     
-        if (!isAdmin) throw ' Solo un administrador puede ejecutar este comando';
+        if (!m.isAdmin) throw ' Solo un administrador puede ejecutar este comando';
 
 const botOwner = global.owner[0][0] + '@s.whatsapp.net';
 
@@ -27,14 +27,14 @@ const botOwner = global.owner[0][0] + '@s.whatsapp.net';
 
         if (userData.muted === true) throw '🚩 Este usuario ya ha sido mutado';
 
-        const vcardMessage = {
+        const vcardm = {
             key: {
                 participants: '0@s.whatsapp.net',
                 fromMe: false,
                 id: 'mute_action'
             },
-            message: {
-                locationMessage: {
+            m: {
+                locationm: {
                     name: 'Usuario Mutado',
                     jpegThumbnail: await (await fetch('https://telegra.ph/file/f8324d9798fa2ed2317bc.png')).buffer(),
                     vcard: 'BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD'
@@ -43,7 +43,7 @@ const botOwner = global.owner[0][0] + '@s.whatsapp.net';
             participant: '0@s.whatsapp.net'
         };
 
-        sock.reply(m.chat, 'Tus mensajes serán eliminados', vcardMessage, null, { mentions: [targetUser] });
+        sock.reply(m.chat, 'Tus mensajes serán eliminados', vcardm, null, { mentions: [targetUser] });
         global.db.data.users[targetUser].muted = true;
     }
 
@@ -60,14 +60,14 @@ const botOwner = global.owner[0][0] + '@s.whatsapp.net';
 
         if (userData.muted === false) throw '☁️ Este usuario no ha sido mutado';
 
-        const vcardMessage = {
+        const vcardm = {
             key: {
                 participants: '0@s.whatsapp.net',
                 fromMe: false,
                 id: 'unmute_action'
             },
-            message: {
-                locationMessage: {
+            m: {
+                locationm: {
                     name: 'Usuario Demutado',
                     jpegThumbnail: await (await fetch('https://telegra.ph/file/aea704d0b242b8c41bf15.png')).buffer(),
                     vcard: 'BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD'
@@ -76,14 +76,14 @@ const botOwner = global.owner[0][0] + '@s.whatsapp.net';
             participant: '0@s.whatsapp.net'
         };
 
-        sock.reply(m.chat, 'Tus mensajes no serán eliminados', vcardMessage, null, { mentions: [targetUser] });
+        sock.reply(m.chat, 'Tus mensajes no serán eliminados', vcardm, null, { mentions: [targetUser] });
         global.db.data.users[targetUser].muted = false;
     }
 };
 
-handler.m.command = ['mute', 'unmute'];
+m.command = ['mute', 'unmute'];
     isAdmin: true,
     isBotAdmin: true,
     isGroup: true
 };
-export default handler;
+
