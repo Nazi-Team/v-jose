@@ -1,7 +1,7 @@
 export default {
     name: 'mute',
     description: 'mutear  miembro del grupo',
-    comand: ['mute'],
+    comand: ['mute', 'unmute'],
     exec: async (m, { sock, m.command, m.text, m.isAdmin }) => {
     
         if (!m.isAdmin) throw ' Solo un administrador puede ejecutar este comando';
@@ -9,8 +9,10 @@ export default {
 const botOwner = global.owner[0][0] + '@s.whatsapp.net';
 
         if (m.mentionedJid[0] === botOwner) throw ' El creador del bot no puede ser mutado';
-
-        let targetUser = m.mentionedJid[0] 
+        
+        if (m.command === 'mute') {
+        
+            let targetUser = m.mentionedJid[0] 
             ? m.mentionedJid[0] 
             : m.quoted 
                 ? m.quoted.sender 
