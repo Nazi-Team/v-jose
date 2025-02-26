@@ -1,5 +1,5 @@
 export default {
-const handler = async (m, { sock, m.command, m.text, m.isAdmin }) => {
+exec:  = async (m, { sock, m.command, m.text, m.isAdmin }) => {
     if (m.command === 'mute') {
         if (!m.isAdmin) throw '*Solo un administrador puede ejecutar este comando*';
         
