@@ -154,7 +154,7 @@ const start = async () => {
                                 return
                             }
                             if (db.data.users[m.sender].warnings >= 3) {
-                                m.reply("El mensaje acumula 3 advertencias y será eliminado.")
+                                m.reply("El mensaje acumula 3 advertencias y serás eliminado.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                                 await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
                                 db.data.users[m.sender].warnings = 0
