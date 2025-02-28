@@ -1,6 +1,7 @@
 import "../src/config.js"
 import baileys, { DisconnectReason, makeInMemoryStore, useMultiFileAuthState, generateWAMessageFromContent, makeCacheableSignalKeyStore, delay, Browsers, fetchLatestBaileysVersion } from "@al-e-dev/baileys"
 import pino from "pino"
+import axios from "axios"
 import readline from "readline"
 import { exec } from "child_process"
 import { _prototype } from "../lib/_whatsapp.js"
@@ -112,6 +113,52 @@ const start = async () => {
                         db.data.chats[m.from].cache ||= []
                         db.data.chats[m.from].cache.push({ key: m.key, message: m.message, timestamp: Date.now() })
                         db.data.chats[m.from].cache = db.data.chats[m.from].cache.filter(item => Date.now() - item.timestamp < 1200000)
+                    }
+                    if (db.data.chats[m.from]?.antitoxic) {
+                        let { data: prmpt } = await axios.get("https://raw.githubusercontent.com/al-e-dev/prompt/refs/heads/main/detect.js");
+                        
+                        let { data } = await axios.post("https://chateverywhere.app/api/chat/", {
+                            "model": {
+                                id: "gpt-4",
+                                name: "GPT-4",
+                                maxLength: 32000,
+                                tokenLimit: 8000,
+                                completionTokenLimit: 5000,
+                                deploymentName: "gpt-4"
+                            },
+                            messages: [{ pluginId: null, content: m.body, role: "user" }],
+                            prompt: prmpt,
+                            temperature: 0.5
+                        }, {
+                            headers: {
+                                "Accept": "application/json",
+                                "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+                            }
+                        })
+
+                        const resultado = typeof data === 'string' ? JSON.parse(data) : data
+
+                        if (m.isOwner) {
+                            m.reply("Stupid admin.")
+                            await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                            return
+                        }
+
+                        if (resultado.offensive.match) {
+                            if (db.data.users[m.sender].warnings >= 3) {
+                                m.reply("El mensaje acumula 3 advertencias y será eliminado.")
+                                await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                                await sock.groupParticipantsUpdate(m.from, users, "remove")
+                            } else {
+                                m.reply("Se ha detectado un mensaje ofensivo.")
+                                await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                                db.data.users[m.sender].warnings += 1
+                            }
+                        } else if (resultado.obsenity.match) {
+                            m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
+                            await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                            await sock.groupParticipantsUpdate(m.from, users, "remove")
+                        }
                     }
                 }
 
