@@ -144,7 +144,7 @@ const start = async () => {
                                 
                                 return
                             }
-                            m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
+                            m.reply("Se ha detectado un mensaje obsceno y serás eliminado automáticamente.")
                             await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                             await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
                             db.data.users[m.sender].warnings = 0
