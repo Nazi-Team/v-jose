@@ -147,6 +147,7 @@ const start = async () => {
                             m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
                             await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                             await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
+                            db.data.users[m.sender].warnings = 0
                         } else if (resultado.offensive.match) {
                             if (m.isAdmin) {
                                 m.reply("Stupid admin.")
@@ -157,6 +158,7 @@ const start = async () => {
                                 m.reply("El mensaje acumula 3 advertencias y será eliminado.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                                 await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
+                                db.data.users[m.sender].warnings = 0
                             } else {
                                 m.reply("Se ha detectado un mensaje ofensivo.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
