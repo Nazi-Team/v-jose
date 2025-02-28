@@ -140,7 +140,7 @@ const start = async () => {
 
                         if (resultado.obsenity.match) {
                             if (m.isAdmin) {
-                                m.reply("Stupid admin.")
+                                m.reply("> Administrad@r evita decir groserias")
                                 
                                 return
                             }
