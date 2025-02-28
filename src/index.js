@@ -147,7 +147,7 @@ const start = async () => {
                             if (db.data.users[m.sender].warnings >= 3) {
                                 m.reply("El mensaje acumula 3 advertencias y será eliminado.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
-                                await sock.groupParticipantsUpdate(m.from, users, "remove")
+                                await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
                             } else {
                                 m.reply("Se ha detectado un mensaje ofensivo.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
@@ -161,7 +161,7 @@ const start = async () => {
                             }
                             m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
                             await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
-                            await sock.groupParticipantsUpdate(m.from, users, "remove")
+                            await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
                         }
                     }
                 }
