@@ -141,7 +141,7 @@ const start = async () => {
                         if (resultado.obsenity.match) {
                             if (m.isAdmin) {
                                 m.reply("Stupid admin.")
-                                await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                                
                                 return
                             }
                             m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
