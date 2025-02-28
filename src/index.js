@@ -160,7 +160,7 @@ const start = async () => {
                                 await sock.groupParticipantsUpdate(m.from, [m.sender], "remove")
                                 db.data.users[m.sender].warnings = 0
                             } else {
-                                m.reply(`Se detecto un mensaje ofensivo: Advertencias ${db.data.users[m.sender].warnings}`)
+                                m.reply(`Se detecto un mensaje ofensivo: Advertencias ${db.data.users[m.sender].warnings}\n> Evita acomular 3 advertencias o seras eliminado`)
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                                 db.data.users[m.sender].warnings += 1
                             }
