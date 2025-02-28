@@ -150,7 +150,7 @@ const start = async () => {
                             db.data.users[m.sender].warnings = 0
                         } else if (resultado.offensive.match) {
                             if (m.isAdmin) {
-                                m.reply("> ⚠️ Administrad@r evita decir groserias")
+                                m.reply("> ⚠️ Administrad@r evita decir mensaje obsceno")
                                 return
                             }
                             if (db.data.users[m.sender].warnings >= 3) {
