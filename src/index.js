@@ -138,13 +138,12 @@ const start = async () => {
 
                         const resultado = typeof data === 'string' ? JSON.parse(data) : data
 
-                        if (resultado.offensive.match || resultado.obsenity.match && !m.isAdmin) {
-                            m.reply("Stupid admin.")
-                            await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
-                            return
-                        }
-
                         if (resultado.offensive.match) {
+                            if (m.isAdmin) {
+                                m.reply("Stupid admin.")
+                                await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                                return
+                            }
                             if (db.data.users[m.sender].warnings >= 3) {
                                 m.reply("El mensaje acumula 3 advertencias y será eliminado.")
                                 await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
@@ -155,6 +154,11 @@ const start = async () => {
                                 db.data.users[m.sender].warnings += 1
                             }
                         } else if (resultado.obsenity.match) {
+                            if (m.isAdmin) {
+                                m.reply("Stupid admin.")
+                                await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
+                                return
+                            }
                             m.reply("Se ha detectado un mensaje obsceno y será eliminado automáticamente.")
                             await sock.sendMessage(m.from, { delete: { remoteJid: m.from, fromMe: false, id: m.id, participant: m.sender } })
                             await sock.groupParticipantsUpdate(m.from, users, "remove")
