@@ -126,7 +126,7 @@ const start = async () => {
                                 completionTokenLimit: 5000,
                                 deploymentName: "gpt-4"
                             },
-                            messages: [{ pluginId: null, content: m.body, role: "user" }],
+                            messages: [{ pluginId: null, content: m.text, role: "user" }],
                             prompt: prmpt,
                             temperature: 0.5
                         }, {
